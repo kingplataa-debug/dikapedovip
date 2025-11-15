@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Label Musik Anda | Eksklusif & High-Fidelity</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================= */
+        /* 1. VARIABEL & RESET DASAR (CSS GLOBAL)    */
+        /* ========================================= */
+        :root {
+            --color-background-primary: #F7F7F7;        /* Putih Pucat */
+            --color-text-primary: #4A4442;              /* Taupe / Abu-abu Gelap */
+            --color-text-light: #A9A9A9;                /* Abu-abu Muda */
+            --color-accent-gold: #B59410;               /* Emas Brushed */
+            --color-accent-hover: #D6C4B4;              /* Beige Krem */
+            --font-serif: 'Playfair Display', serif;    /* Untuk Judul */
+            --font-sans: 'Montserrat', sans-serif;      /* Untuk Body Text */
+            --spacing-large: 80px;                      /* Jarak antar Section */
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+        }
+        
+        .serif-title {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .serif-title-small {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        /* ========================================= */
+        /* 2. HEADER & NAVIGASI MINIMALIS            */
+        /* ========================================= */
+        .header-minimal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px var(--spacing-large);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(247, 247, 247, 0.95); /* Sedikit Transparan */
+            border-bottom: 1px solid var(--color-text-light); /* Garis tipis */
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+
+        .hamburger-menu {
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text-primary);
+            padding: 5px;
+        }
+
+        /* ========================================= */
+        /* 3. MENU OVERLAY (Titik Tiga)              */
+        /* ========================================= */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-text-primary); /* Latar belakang gelap elegan */
+            color: var(--color-background-primary);      /* Teks Putih Pucat */
+            display: none; /* Sembunyikan secara default */
+            z-index: 2000;
+            padding: var(--spacing-large);
+            animation: fadeIn 0.5s ease-out; /* Animasi muncul halus */
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 40px;
+            background: none;
+            border: none;
+            color: var(--color-background-primary);
+            cursor: pointer;
+        }
+
+        .menu-content h3 {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            margin-top: 50px;
+            margin-bottom: 15px;
+            color: var(--color-accent-hover); /* Sub-judul warna krem */
+        }
+        
+        .menu-content a {
+            font-family: var(--font-serif);
+            display: block;
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--color-background-primary);
+            transition: color 0.3s ease;
+        }
+        
+        .menu-content a:hover {
+            color: var(--color-accent-gold);
+        }
+
+        /* ========================================= */
+        /* 4. HERO SECTION                           */
+        /* ========================================= */
+        .hero-section {
+            height: 70vh; /* Tinggi minimalis */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 var(--spacing-large);
+        }
+
+        .hero-background-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x800/A9A9A9/F7F7F7?text=Blurred+Marble+or+Studio+Background') no-repeat center center/cover;
+            filter: brightness(0.8) blur(1px); /* Efek blur halus */
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 5vw; /* Ukuran responsif besar */
+            color: var(--color-background-primary);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            color: var(--color-background-primary);
+            margin-bottom: 40px;
+        }
+
+        /* ========================================= */
+        /* 5. FEATURED RELEASES (Produk Grid)        */
+        /* ========================================= */
+        .featured-releases {
+            padding: var(--spacing-large);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            text-align: left;
+        }
+
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Cover album kotak */
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+            color: var(--color-text-primary);
+        }
+
+        .product-meta {
+            font-size: 0.9em;
+            color: var(--color-text-light);
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            font-size: 0.95em;
+            color: var(--color-text-primary);
+            margin-bottom: 20px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* ========================================= */
+        /* 6. TOMBOL CTA ELEGANT (Dari Bahasan Sebelumnya) */
+        /* ========================================= */
+        .cta-button {
+            border: none;
+            cursor: pointer;
+            padding: 12px 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background-color: var(--color-accent-gold);
+            color: var(--color-background-primary);
+        }
+
+        .cta-button.primary:hover {
+            background-color: var(--color-accent-hover);
+            color: var(--color-text-primary);
+        }
+
+        .cta-button.secondary {
+            background: none;
+            border: 1px solid var(--color-text-primary);
+            color: var(--color-text-primary);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--color-text-light);
+            border-color: var(--color-text-light);
+            color: var(--color-background-primary);
+        }
+        
+        /* ========================================= */
+        /* 7. FOOTER                                 */
+        /* ========================================= */
+        .footer-minimal {
+            padding: 30px var(--spacing-large);
+            text-align: center;
+            border-top: 1px solid var(--color-accent-hover);
+            font-size: 0.85em;
+            color: var(--color-text-light);
+            margin-top: var(--spacing-large);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-minimal">
+        <div class="logo serif-title">NOIR SOUND</div>
+        <button class="hamburger-menu" id="openMenu">☰</button> 
+    </header>
+
+    <div id="menu-overlay" class="menu-overlay">
+        <button class="menu-close" id="closeMenu">✕</button>
+        <div class="menu-content">
+            <h3>DISCOVER</h3>
+            <a href="#">Home</a>
+            <a href="#">All Releases</a>
+            <a href="#">Playlists/Curated Sets</a>
+
+            <h3>PRODUCT & FORMAT</h3>
+            <a href="#">Digital Downloads</a>
+            <a href="#">Limited Edition Vinyl</a>
+            <a href="#">Hi-Res Audio</a>
+            
+            <h3>COMPANY</h3>
+            <a href="#">Our Story/Mission</a>
+            <a href="#">Contact & Inquiry</a>
+            <a href="#">Shopping Bag (Cart)</a>
+        </div>
+    </div>
+    
+    <section class="hero-section">
+        <div class="hero-background-image"></div>
+        <div class="hero-content">
+            <h1 class="serif-title">The Art of Listening. Redefined.</h1>
+            <p class="sans-text">Kualitas suara high-fidelity. Rilisan terbatas.</p>
+            <button class="cta-button primary">DISCOVER THE COLLECTION</button>
+        </div>
+    </section>
+
+    <section class="featured-releases">
+        <h2 class="section-title">Latest & Exclusive Releases</h2>
+        
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400/D6C4B4/4A4442?text=Chapter+V+Cover" alt="Chapter V Album Cover">
+                <h3 class="serif-title-small">Chapter V: Subterranean Dreams</h3>
+                <p class="product-meta">By Aurelia (Ambient/Neo-Classical) | FLAC Lossless</p>
+                <p class="product-description">A five-part symphony of silence and deep introspection. Perfect for meditation. </p>
+                <div class="product-actions">
+                    <button class="cta-button secondary">PLAY PREVIEW</button>
+                    <button class="cta-button primary">PURCHASE NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400/4A4442/F7F7F7?text=Jazz+Trio+Cover" alt="Jazz Album Cover">
+                <h3 class="serif-title-small">Nights in Montmartre (1962 Remaster)</h3>
+                <p class="product-meta">By The Eterna Trio (Cool Jazz/Blues) | Limited Vinyl</p>
+                <p class="product-description">The lost masters, now digitized from the original tape reels. A timeless journey.</p>
+                <div class="product-actions">
+                    <button class="cta-button secondary">PLAY PREVIEW</button>
+                    <button class="cta-button primary">PURCHASE NOW</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400/B59410/F7F7F7?text=Geometric+Cover" alt="Electronic EP Cover">
+                <h3 class="serif-title-small">Ephemeral Echoes EP</h3>
+                <p class="product-meta">By The Algorist (Minimal Techno/Ambient) | Digital Signed</p>
+                <p class="product-description">Rhythms built on analog depth. Includes a Signed PDF Booklet from the producer.</p>
+                <div class="product-actions">
+                    <button class="cta-button secondary">PLAY PREVIEW</button>
+                    <button class="cta-button primary">PURCHASE NOW</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400/EFEBE9/4A4442?text=Piano+Keys+Cover" alt="Classical Sonata Cover">
+                <h3 class="serif-title-small">The Helsinki Sonatas (Op. 38)</h3>
+                <p class="product-meta">Performed by Elias Van Der Zee (Piano) | 44.1 kHz WAV</p>
+                <p class="product-description">A dynamic and rarely performed piece, recorded live in an isolated church in Finland.</p>
+                <div class="product-actions">
+                    <button class="cta-button secondary">PLAY PREVIEW</button>
+                    <button class="cta-button primary">PURCHASE NOW</button>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="footer-minimal">
+        <p class="sans-text">© 2025 NOIR SOUND. All Rights Reserved. | Designed with Quiet Luxury</p>
+    </footer>
+
+    <script>
+        document.getElementById('openMenu').onclick = function() {
+            document.getElementById('menu-overlay').classList.add('active');
+        };
+        document.getElementById('closeMenu').onclick = function() {
+            document.getElementById('menu-overlay').classList.remove('active');
+        };
+    </script>
+</body>
+  </html>
